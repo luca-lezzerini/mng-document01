@@ -12,6 +12,7 @@ import com.example.proj1309.service.MongoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,9 +28,14 @@ public class MongoController {
     @Autowired
     private MongoServiceImpl service;
     
+    @PostMapping("/insertDoc")
+    public void insertDoc(@RequestBody Documento1 doc){
+        service.saveDocument(doc);
+    }
+    
     @RequestMapping("/insertDoc1")
     public void insertDoc1(@RequestBody Documento1 doc){
-        service.saveDocumento(doc);
+        service.saveDocumento1(doc);
     }
     
     @RequestMapping("/insertDoc3")
@@ -44,7 +50,7 @@ public class MongoController {
     
     @RequestMapping("/getDoc1")
     public List<Documento1> getDoc1(){
-        return service.getDocumenti();
+        return service.getDocumenti1();
     }
     
     @RequestMapping("/getDoc2")

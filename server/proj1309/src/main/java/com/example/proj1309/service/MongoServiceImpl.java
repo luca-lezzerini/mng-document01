@@ -13,6 +13,7 @@ import com.example.proj1309.repository.DocumentiMongoRepo2;
 import com.example.proj1309.repository.DocumentiMongoRepo3;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,12 +28,12 @@ public class MongoServiceImpl {
     @Autowired
     DocumentiMongoRepo2 dmr2;
     @Autowired
-    DocumentiMongoRepo3 dmr3;
+    DocumentiMongoRepo3 dmr3;       
     
+    @Autowired
+    private MongoTemplate mongoTemplate;
     
-    
-    
-    public void saveDocumento(Documento1 doc){
+    public void saveDocumento1(Documento1 doc){
         dmr.save(doc);
     }
     
@@ -44,7 +45,7 @@ public class MongoServiceImpl {
         dmr3.save(doc);
     }
     
-    public List<Documento1> getDocumenti(){
+    public List<Documento1> getDocumenti1(){
         return dmr.findAll();
     }
     
@@ -54,5 +55,10 @@ public class MongoServiceImpl {
     
     public List<Documento3> getDocumenti3(){
         return dmr3.findAll();
+    }
+    
+    public <T> T saveDocument(T t){
+        mongoTemplate.save(t);
+        return t;
     }
 }
