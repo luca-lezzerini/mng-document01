@@ -1,0 +1,73 @@
+<h3 *ngIf="insertDocOk" style="color:green">Documento 1 inserito correttamente</h3>
+<h3 *ngIf="insertDocOk2" style="color:green">Documento 2 inserito correttamente</h3>
+<h3 *ngIf="insertDocOk3" style="color:green">Documento 3 inserito correttamente</h3>
+<h3 *ngIf="insertDocKo" style="color:red">Errore durante inserimento Documento 1</h3>
+<h3 *ngIf="insertDocKo2" style="color:red">Errore durante inserimento Documento 2</h3>
+<h3 *ngIf="insertDocKo3" style="color:red">Errore durante inserimento Documento 3</h3>
+<table>
+    <tr>
+        <td>Campo1:</td>
+        <td><input type="text" [(ngModel)]="campo1" /></td>
+        <td>Campo2:</td>
+        <td><input type="text" [(ngModel)]="campo2" /></td>
+        <td>Campo3:</td>
+        <td><input type="text" [(ngModel)]="campo3" /></td>
+    </tr>
+    <tr>
+        <td>Numero1:</td>
+        <td><input type="text" [(ngModel)]="numero1" /></td>
+        <td>Numero2:</td>
+        <td><input type="text" [(ngModel)]="numero2" /></td>
+        <td>Numero3:</td>
+        <td><input type="text" [(ngModel)]="numero3" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button (click)='insertDoc1()'>Inserisci Doc1</button></td>
+        <td colspan="2"><button (click)='insertDoc2()'>Inserisci Doc2</button></td>
+        <td colspan="2"><button (click)='insertDoc3()'>Inserisci Doc3</button></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button (click)='getDoc1()'>Mostra Doc1</button></td>
+        <td colspan="2"><button (click)='getDoc2()'>Mostra Doc2</button></td>
+        <td colspan="2"><button (click)='getDoc3()'>Mostra Doc3</button></td>
+    </tr>
+</table>
+<br>
+<br>
+<table *ngIf='doc1'>
+  <tr>
+      <th>Campo</th>
+      <th>Numero</th>
+  </tr>
+  <tr  *ngFor="let doc of listaDoc1">
+      <td>{{doc.campo}}</td>
+      <td>{{doc.numero}}</td>
+  </tr>
+  
+</table>
+
+<table *ngIf='doc2'>
+  <tr>
+      <th>Campo</th>
+      <th>Numero</th>
+  </tr>
+  <tr  *ngFor="let doc of listaDoc2">
+      <td>{{doc.campo}}</td>
+      <td>{{doc.numero}}</td>
+  </tr>
+  
+</table>
+
+<table *ngIf='doc3'>
+  <tr>
+      <th>Campo</th>
+      <th>Numero</th>
+  </tr>
+  <tr  *ngFor="let doc of listaDoc3">
+      <td>{{doc.campo}}</td>
+      <td>{{doc.numero}}</td>
+  </tr>
+  
+</table>
+
+<router-outlet></router-outlet>
